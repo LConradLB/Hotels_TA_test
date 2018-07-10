@@ -1,5 +1,10 @@
 const express = require('express')
 const app = express()
+const HotelCollection = require("./hotelCollection.js")
+const hotel = require("./hotel.js")
+
+const collection = new HotelCollection()
+
 
 //Serves frontend webpage
 app.use(express.static("public"))
@@ -10,19 +15,20 @@ app.listen(3000, ()=>{
 })
 
 app.get('/list-hotels', (req,res) =>{
-        let dummyList = [{
-            name:"Area One",
-            rating:9,
-            location:"London"
-        },
-        {
-            name:"Area Two",
-            rating:8,
-            location:"San Francisco"
-        }
-        ]
-        res.send(dummyList)
-    })
+        
+
+        //return list of hotels
+        res.send(collection.hotels)
+})
+
+app.post('/create-hotel', (req,res) =>{
+    const newHotel = new hotel('Area One', 'London')
+    newHotel.addReview(5)
+    collection.add(newHotel)
+
+    //return list of hotels
+    res.send(collection.hotels)
+})
 
 
 

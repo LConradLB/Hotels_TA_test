@@ -9,11 +9,11 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <h1> HotelRatings.com </h1>
+    <h1> Add Hotel </h1>
     <nav>
         <ul>
             <li>
-                    <a href="/">Home</a>
+                    <a href="/" title="Go Home">Home</a>
             </li>
             <li>
                 <a href="addHotel.html">Add Hotel</a>
@@ -23,6 +23,16 @@
             </li>
         </ul>
     </nav>
+
+    <section>
+        <form method="post" action="/create-hotel">
+            <label>Hotel Name</label>
+            <input placeholder="Hotel Name" name="hotelName">
+            <label>Hotel Location</label>
+            <input placeholder="Hotel Location" name="hotelLocation">
+            <button>Submit</button>
+        </form>
+    </section>
 
 </body>
 </html>
