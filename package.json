@@ -1,0 +1,18 @@
+{
+  "name": "hotle-server",
+  "version": "1.0.0",
+  "description": "Backend service for hotel rating",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "expressjs": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
