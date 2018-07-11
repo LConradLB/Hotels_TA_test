@@ -42,7 +42,7 @@ class HotelCollection{
     }
 
     toJSON(){
-        return this.hotels
+        return JSON.stringify(this.hotels)
     }
 }
 

@@ -49,8 +49,8 @@ class Hotel {
 
 
     toJSON(){
-        //return JSON.stringify(this)
-        return this;
+        return JSON.stringify(this)
+        //return this;
     }
 }
 

@@ -1,58 +1,51 @@
 const express = require('express')
+
+
+const HotelCollection = require("../Simple-Hotel-Project-Node-Express-master/models/hotelCollection.js")
+const review = require("../Simple-Hotel-Project-Node-Express-master/models/review")
+const hotel = require("../Simple-Hotel-Project-Node-Express-master/models/hotel.js")
+
 const app = express()
-const HotelCollection = require("./hotelCollection.js")
-const hotel = require("./hotel.js")
+const fs = require('fs')
 
 const collection = new HotelCollection()
 
 
 //Serves frontend webpage
 app.use(express.static("public"))
+app.use(express.json())
+app.use(express.urlencoded())
+
+
 
 //Start server
-app.listen(3000, ()=>{
+app.listen(2000, ()=>{
     console.log("Server is listening on port 3000. Ready to accept request.")
 })
 
 app.get('/list-hotels', (req,res) =>{
-        
 
+    collection.hotels = JSON.parse(fs.readFileSync('./hotelCollection.json', 'utf8'));
         //return list of hotels
         res.send(collection.hotels)
 })
 
 app.post('/create-hotel', (req,res) =>{
-    const newHotel = new hotel('Area One', 'London')
+    const {hotelName, hotelLocation} = req.body
+    const newHotel = new hotel(hotelName, hotelLocation)
     newHotel.addReview(5)
     collection.add(newHotel)
+    console.log(req.body)
+
+    fs.writeFileSync('./hotelCollection.json',collection.toJSON(), 'utf8', function (err) {
+      if (err) {
+          console.log('Some error occured - file either not saved or corrupted file saved.');
+      } else{
+          console.log('It\'s saved!');
+      }
+      });
+
 
     //return list of hotels
-    res.send(collection.hotels)
+    res.send(collection.toJSON())
 })
-
-
-
-
-
-
-
-
-
-
-
-
-// app.get('/', (req,res) =>{
-//     console.log('Obtaining request')
-//     res.send('Hello you')
-// })
-
-// app.get('/hotels', (req,res) =>{
-//     console.log('Obtaining request')
-//     const hotel = {
-//         name: "Ritz",
-//         rating: 5
-//     }
-//     res.send(hotel)
-// })
-
-//app.post
