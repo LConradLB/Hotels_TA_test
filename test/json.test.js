@@ -1,3 +1,7 @@
+const chai = require('chai');
+const expect = chai.expect;
+
+
 describe("JSON Tests",()=>{
     describe("PARSING TO",()=>{
         it("Should parse an object to JSON",()=>{

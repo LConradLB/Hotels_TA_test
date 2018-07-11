@@ -1,9 +1,9 @@
 const express = require('express')
 
 
-const HotelCollection = require("../Simple-Hotel-Project-Node-Express-master/models/hotelCollection.js")
-const review = require("../Simple-Hotel-Project-Node-Express-master/models/review")
-const hotel = require("../Simple-Hotel-Project-Node-Express-master/models/hotel.js")
+const HotelCollection = require("./models/hotelCollection.js")
+const review = require("./models/review")
+const hotel = require("./models/hotel.js")
 
 const app = express()
 const fs = require('fs')
