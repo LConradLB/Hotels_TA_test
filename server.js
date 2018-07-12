@@ -21,6 +21,8 @@ app.use(express.urlencoded())
 //Start server
 app.listen(2000, ()=>{
     console.log("Server is listening on port 3000. Ready to accept request.")
+    collection.hotels = JSON.parse(fs.readFileSync('./hotelCollection.json', 'utf8'));
+
 })
 
 app.get('/list-hotels', (req,res) =>{
